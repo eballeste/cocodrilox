@@ -14,6 +14,12 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sass',
-    'gatsby-plugin-root-import'
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        components: `${__dirname}/src/components`,
+        styles: `${__dirname}/src/styles`,
+      },
+    },
   ],
 }
