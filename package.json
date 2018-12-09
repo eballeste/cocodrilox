@@ -11,6 +11,7 @@
     "gatsby-plugin-sharp": "^2.0.12",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-sharp": "^2.1.8",
+    "minireset.css": "0.0.3",
     "node-sass": "^4.11.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
