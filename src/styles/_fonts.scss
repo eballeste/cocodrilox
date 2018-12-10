@@ -1,0 +1,27 @@
+@import url("https://use.typekit.net/hdx2imo.css");
+
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin futura-light() {
+  font-family: futura-pt, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  @include font-smoothing;
+}
+
+@mixin futura-medium() {
+  font-family: futura-pt, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  @include font-smoothing;
+}
+
+@mixin prestige() {
+  font-family: prestige-elite-std, monospace;
+  font-weight: 700;
+  font-style: normal;
+  @include font-smoothing;
+}

@@ -1,1 +1,14 @@
 @import '~minireset.css/minireset.css';
+@import 'styles/utils.scss';
+
+body {
+  @include futura-light;
+  font-size: 16px;
+  line-height: 20px;
+  color: $color-black;
+  background-color: $color-pink;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include prestige;
+}
