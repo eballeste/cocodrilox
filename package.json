@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Enrique Ballesté <enrique.balleste@gmail.com>",
   "dependencies": {
+    "bourbon-neat": "^3.0.0",
     "gatsby": "^2.0.53",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-react-helmet": "^3.0.2",
