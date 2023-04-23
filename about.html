@@ -5,12 +5,16 @@
     <title>Hello</title>
     <script type="module">
       import { initCursor } from './assets/scripts/components/cursor.js';
-
       initCursor();
+
+      import { initTransitions } from './assets/scripts/transitions.js';
+      initTransitions();
     </script>
   </head>
-  <body>
-    <a href="/" cursor-trigger>¿Who me?</a>
+  <body data-barba="wrapper">
+    <main data-barba="container" data-barba-namespace="about">
+      <a href="/" cursor-trigger>¿Who me?</a>
+    </main>
     <cursor-panel>
       <coco-cursor></coco-cursor>
     </cursor-panel>

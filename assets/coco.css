@@ -6,14 +6,84 @@ body {
   min-height: 100dvh;
   background-color: #f9ebeb;
   cursor: none;
+  display: grid;
+  grid-template-areas: "page";
+  color: #14142B;
+}
+
+main {
+  grid-area: page;
+  width: 20lvw;
+  height: 20lvh;
   display: flex;
   align-items: center;
   justify-content: center;
+  place-self: center;
+}
+main[data-barba-namespace=home] {
+  background-color: #9fd1a4;
   color: #14142B;
+}
+main[data-barba-namespace=about] {
+  background-color: #14142B;
+  color: #ee7036;
+}
+main a {
+  color: inherit;
 }
 
 h1, h2, h3, h4, h5 {
   margin: 0;
+}
+
+.coco-load-once {
+  opacity: 0;
+}
+.coco-load-once-active {
+  transition: opacity 1.2s ease 0.4s;
+}
+.coco-load-once-to {
+  opacity: 1;
+}
+
+.coco-fade-leave {
+  opacity: 1;
+}
+.coco-fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+.coco-fade-leave-to {
+  opacity: 0;
+}
+.coco-fade-enter {
+  opacity: 0;
+}
+.coco-fade-enter-active {
+  transition: opacity 0.4s ease;
+}
+.coco-fade-enter-to {
+  opacity: 1;
+}
+
+.coco-clip-leave {
+  opacity: 1;
+}
+.coco-clip-leave-active {
+  transition: opacity 0.72s ease;
+}
+.coco-clip-leave-to {
+  opacity: 0;
+}
+.coco-clip-enter {
+  -webkit-clip-path: circle(0);
+          clip-path: circle(0);
+}
+.coco-clip-enter-active {
+  transition: all 0.72s ease;
+}
+.coco-clip-enter-to {
+  -webkit-clip-path: circle(75%);
+          clip-path: circle(75%);
 }
 
 cursor-panel {

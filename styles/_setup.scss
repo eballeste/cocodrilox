@@ -34,10 +34,33 @@ body {
   min-height: 100dvh;
   background-color: $color-isabelline;
   cursor: none;
+  display: grid;
+  grid-template-areas: 'page';
+  color: $color-black;
+}
+
+main {
+  grid-area: page;
+  width: 20lvw;
+  height: 20lvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: $color-black;
+  place-self: center;
+
+  &[data-barba-namespace=home] {
+    background-color: $color-eton-blue;
+    color: $color-black;
+  }
+
+  &[data-barba-namespace=about] {
+    background-color: $color-black;
+    color: $color-chinese-orange;
+  }
+
+  a {
+    color: inherit;
+  }
 }
 
 h1, h2, h3, h4, h5 {
