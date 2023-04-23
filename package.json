@@ -1,0 +1,17 @@
+{
+  "name": "cocodrilox",
+  "version": "0.0.1",
+  "description": "cocodrilox site",
+  "main": "index.html",
+  "author": "Enrique Ballesté-Peralta",
+  "devDependencies": {
+    "include-media": "^2.0.0",
+    "laravel-mix": "^6.0.49",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.62.0",
+    "sass-loader": "^12.6.0"
+  },
+  "scripts": {
+    "watch-styles": "npx mix watch -- --watch-options-poll=1000"
+  }
+}

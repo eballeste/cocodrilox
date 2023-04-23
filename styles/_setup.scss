@@ -1,0 +1,45 @@
+@import '/node_modules/include-media/dist/include-media';
+
+$screen-xs: 375px;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1280px;
+
+$gutter-1: 16px;
+$gutter-2: 24px;
+$gutter-3: 32px;
+
+$breakpoints: (
+  xs: $screen-xs,
+  sm: $screen-sm,
+  md: $screen-md,
+  lg: $screen-lg,
+  xl: $screen-xl,
+);
+
+$color-black: #14142B;
+$color-ceil: #9297c8;
+$color-chinese-orange: #ee7036;
+$color-melow-apricot: #f2b97a;
+$color-isabelline: #f9ebeb;
+$color-mauvelous: #f3a5a5;
+$color-eton-blue: #9fd1a4;
+
+html, body {
+  margin: 0;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: $color-isabelline;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-black;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}

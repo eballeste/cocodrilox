@@ -1,0 +1,35 @@
+server {
+  listen 80;
+  listen 443 ssl http2;
+  server_name .cocodrilox.test;
+  root "/home/vagrant/projects/cocodrilox.test";
+  index index.html;
+
+  charset utf-8;
+
+  location / {
+    if ( $request_uri ~ ^/(.*)\.html ) {
+      return 301 /$1$is_args$args;
+    }
+
+    try_files $uri $uri.html $uri/ =404;
+  }
+
+  error_page 404 /404.html;
+  error_page 403 /403.html;
+
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location = /robots.txt  { access_log off; log_not_found off; }
+
+  access_log off;
+  error_log  /var/log/nginx/cocodrilox.test-error.log error;
+
+  sendfile off;
+
+  location ~ /\. {
+      deny all;
+  }
+
+  ssl_certificate     /etc/ssl/certs/cocodrilox.test.crt;
+  ssl_certificate_key /etc/ssl/certs/cocodrilox.test.key;
+}

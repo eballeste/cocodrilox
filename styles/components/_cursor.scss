@@ -1,0 +1,67 @@
+$cursor-sz: 12px;
+
+cursor-panel {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 999;
+  pointer-events: none;
+
+  coco-cursor {
+    display: block;
+    width: $cursor-sz;
+    height: $cursor-sz;
+    opacity: 0;
+    transition: opacity 0.24s ease;
+    position: relative;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-origin: center;
+      border-radius: 50%;
+      transition: transform 0.16s ease-out;
+    }
+
+    &:before {
+      width: 100%;
+      height: 100%;
+      background-color: $color-mauvelous;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    &:after {
+      width: 150%;
+      height: 150%;
+      border: 2px solid $color-chinese-orange;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    &[visible] {
+      opacity: 1;
+    }
+
+    &[clickable] {
+      &:before, &:after {
+        transition: transform 0.24s ease-out;
+      }
+
+      &:before {
+        transform: translate(-50%, -50%) scale(0);
+      }
+
+      &:after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+}
+
+[cursor-trigger] {
+  padding: $cursor-sz * 1.25;
+}
