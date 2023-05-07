@@ -30,13 +30,32 @@ html, body {
   margin: 0;
 }
 
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-size-adjust: 100%;
+}
+
 body {
+  font-smooth: always;
+  border: none;
   min-height: 100dvh;
   background-color: $color-isabelline;
   cursor: none;
   display: grid;
   grid-template-areas: 'page';
   color: $color-black;
+
+  -webkit-tap-highlight-color: $color-chinese-orange;
+  backface-visibility: hidden;
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  touch-action: auto;
 }
 
 main {
