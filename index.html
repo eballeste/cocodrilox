@@ -3,13 +3,6 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/assets/coco.css" />
     <title>Hello</title>
-    <script type="module">
-      import { initCursor } from './assets/scripts/components/cursor.js';
-      initCursor();
-
-      import { initTransitions } from './assets/scripts/transitions.js';
-      initTransitions();
-    </script>
   </head>
   <body data-barba="wrapper">
     <main data-barba="container" data-barba-namespace="home">
@@ -18,5 +11,6 @@
     <cursor-panel>
       <coco-cursor></coco-cursor>
     </cursor-panel>
+    <script src="/assets/home.js" defer></script>
   </body>
 </html>

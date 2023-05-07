@@ -1,12 +1,12 @@
-import barba from 'https://esm.sh/@barba/core';
-import barbaCss from 'https://esm.sh/@barba/css';
+import barba from '@barba/core';
+import barbaCss from '@barba/css';
+barba.use(barbaCss);
 
 barba.hooks.before(function(data) {
   console.log(data.current.container);
 });
 
 export const initTransitions = function() {
-  barba.use(barbaCss);
   barba.init({
     transitions: [
       {

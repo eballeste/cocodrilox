@@ -1,4 +1,4 @@
-import { lerp, getMousePos } from '../utils.js';
+import { lerp, getMousePos } from '../utils';
 
 export const initCursor = function() {
   const $cursorPanel = document.querySelector('cursor-panel');

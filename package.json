@@ -13,5 +13,9 @@
   },
   "scripts": {
     "watch-styles": "npx mix watch -- --watch-options-poll=1000"
+  },
+  "dependencies": {
+    "@barba/core": "^2.9.7",
+    "@barba/css": "^2.1.15"
   }
 }
