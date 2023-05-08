@@ -103,11 +103,16 @@ const Sprite = function(options) {
     activeAnimationStep = ( smoothStep && activeAnimationStep < activeAnimation.frameIndices.length) ? activeAnimationStep : 0;
 
     clearAnimation();
-    advanceFrame();
-    activeAnimationID = setInterval(advanceFrame, animation.timePerFrame);
+    renderForward();
+    activeAnimationID = setInterval(renderForward, animation.timePerFrame);
   };
 
-  const advanceFrame = function () {
+  const render = function () {
+    clearCanvas();
+    drawSpriteOnCanvas();
+  };
+
+  const renderForward = function () {
     if (activeAnimationStep >= activeAnimation.frameIndices.length) {
       if (activeAnimation.onEnd === 'repeat') {
         activeAnimationStep = 0;
@@ -119,9 +124,7 @@ const Sprite = function(options) {
     const frameIndex = activeAnimation.frameIndices[activeAnimationStep];
     activeFrame = frames[frameIndex];
 
-    clearCanvas();
-    drawSpriteOnCanvas();
-
+    render();
     activeAnimationStep += 1;
   };
 
@@ -135,8 +138,7 @@ const Sprite = function(options) {
     $spriteCanvas = document.createElement('canvas');
     $spriteCanvas.width = $container.offsetWidth;
     $spriteCanvas.height = $container.offsetHeight;
-    const spriteScale = Math.floor($container.offsetWidth / spriteWidth);
-    console.log(spriteScale);
+    let spriteScale = Math.floor($container.offsetWidth / spriteWidth);
 
     $spriteContext = $spriteCanvas.getContext('2d', { willReadFrequently: true });
     $spriteContext.imageSmoothingEnabled = false;
@@ -156,6 +158,18 @@ const Sprite = function(options) {
 
       activeFrame = frames[0];
       ready();
+    });
+
+    window.addEventListener('resize', function(e) {
+      $spriteCanvas.width = $container.offsetWidth;
+      $spriteCanvas.height = $container.offsetHeight;
+      spriteScale = Math.floor($container.offsetWidth / spriteWidth);
+
+      $spriteContext.resetTransform();
+      $spriteContext.imageSmoothingEnabled = false;
+      $spriteContext.scale(spriteScale, spriteScale);
+
+      render();
     });
   }();
 
