@@ -12,7 +12,7 @@
     "sass-loader": "^12.6.0"
   },
   "scripts": {
-    "watch-styles": "npx mix watch -- --watch-options-poll=1000"
+    "watch": "npx mix watch -- --watch-options-poll=1000"
   },
   "dependencies": {
     "@barba/core": "^2.9.7",

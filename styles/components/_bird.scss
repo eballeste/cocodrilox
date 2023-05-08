@@ -1,0 +1,15 @@
+bird {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  pointer-events: none;
+
+  bird-box {
+    width: clamp(200px, 40vw, 300px);
+    height: clamp(200px, 40vw, 300px);
+  }
+}
