@@ -95,16 +95,21 @@ const Sprite = function(options) {
     };
   };
 
-  const animate = function (animationName, smoothStep) {
+  const animate = function (animationName, smoothStep, forward = true) {
     const animation = animations[animationName];
     if (animation === undefined) { return; }
 
     activeAnimation = animation;
-    activeAnimationStep = ( smoothStep && activeAnimationStep < activeAnimation.frameIndices.length) ? activeAnimationStep : 0;
+    activeAnimationStep = forward
+      ? (( smoothStep && activeAnimationStep < activeAnimation.frameIndices.length) ? activeAnimationStep : 0)
+      : (( smoothStep && activeAnimationStep >= 0) ? activeAnimationStep : activeAnimation.frameIndices.length - 1);
+
+    const renderDirection = forward ? renderForward : renderBackwards;
 
     clearAnimation();
-    renderForward();
-    activeAnimationID = setInterval(renderForward, animation.timePerFrame);
+
+    renderDirection();
+    activeAnimationID = setInterval(renderDirection, animation.timePerFrame);
   };
 
   const render = function () {
@@ -127,6 +132,51 @@ const Sprite = function(options) {
     render();
     activeAnimationStep += 1;
   };
+
+  const renderBackwards = function() {
+    if (activeAnimationStep < 0) {
+      if (activeAnimation.onEnd === 'repeat') {
+        activeAnimationStep = activeAnimation.frameIndices.length - 1;
+      } else {
+        clearAnimation();
+      }
+    }
+
+    const frameIndex = activeAnimation.frameIndices[activeAnimationStep];
+    activeFrame = frames[frameIndex];
+
+    render();
+    activeAnimationStep -= 1;
+  };
+
+  const showNextStep = function(animationName) {
+    const animation = animations[animationName];
+    if (animation === undefined) { return; }
+
+    activeAnimation = animation;
+    activeAnimationStep = (activeAnimationStep < activeAnimation.frameIndices.length && activeAnimationStep >= 0) ? activeAnimationStep : 0;
+
+    const frameIndex = activeAnimation.frameIndices[activeAnimationStep];
+    activeFrame = frames[frameIndex];
+    render();
+
+    activeAnimationStep++;
+  };
+
+  const showPreviousStep = function(animationName) {
+    const animation = animations[animationName];
+    if (animation === undefined) { return; }
+
+    activeAnimation = animation;
+    activeAnimationStep = (activeAnimationStep >= 0 && activeAnimationStep < activeAnimation.frameIndices.length) ? activeAnimationStep : activeAnimation.frameIndices.length - 1;
+
+    const frameIndex = activeAnimation.frameIndices[activeAnimationStep];
+    activeFrame = frames[frameIndex];
+    render();
+
+
+    activeAnimationStep--;
+  }
 
   const clearAnimation = function () {
     clearInterval(activeAnimationID);
@@ -177,6 +227,8 @@ const Sprite = function(options) {
     onReady,
     addAnimation,
     animate,
+    showNextStep,
+    showPreviousStep,
   };
 };
 

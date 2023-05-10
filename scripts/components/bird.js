@@ -1,4 +1,5 @@
 import Sprite from '../utils/sprite';
+import { throttle, scrollDirectionTracker } from '../utils/helpers';
 
 (function() {
   const $birdContainer = document.querySelector('bird-box');
@@ -27,7 +28,17 @@ import Sprite from '../utils/sprite';
       frameIndices: [3,4,5,4]
     });
 
-    birdSprite.animate('walkright', true);
+    //birdSprite.animate('walkright', true, false);
+    birdSprite.showNextStep('walkright');
+
+    const scrollDirection = new scrollDirectionTracker();
+    window.addEventListener('scroll', throttle(function() {
+      if (scrollDirection.isScrollingDown()) {
+        birdSprite.showNextStep('walkright');
+      } else {
+        birdSprite.showPreviousStep('walkleft');
+      }
+    }, 250));
   });
 
   globalThis.bird = birdSprite;
